@@ -51,6 +51,27 @@ const controls = new OrbitControls(camera, renderer.domElement);
 
 // Stars
 
+function addStar() {
+  //TODO: optimize: make geom & mat only once. More?
+  const geometry = new THREE.SphereGeometry(0.5);
+  const material = new THREE.MeshStandardMaterial({ color: 0xffffff });
+  const mesh = new THREE.Mesh(geometry, material);
+
+  const pos = new Array(3)
+    .fill()
+    .map((d) => THREE.MathUtils.randFloatSpread(100));
+
+  mesh.position.set(pos[0], pos[1], pos[2]);
+
+  console.log(mesh.position);
+
+  scene.add(mesh);
+}
+
+Array(200)
+  .fill()
+  .forEach((d) => addStar());
+
 // Render loop
 
 function animate() {

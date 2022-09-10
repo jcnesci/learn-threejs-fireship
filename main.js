@@ -67,6 +67,11 @@ function addStar() {
 
 Array(200).fill().forEach(addStar);
 
+// Background
+
+const bgTexture = new THREE.TextureLoader().load("space.jpeg");
+scene.background = bgTexture;
+
 // Render loop
 
 function animate() {

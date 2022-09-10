@@ -54,7 +54,7 @@ const controls = new OrbitControls(camera, renderer.domElement);
 function addStar() {
   //TODO: optimize: make geom & mat only once. More?
   const geometry = new THREE.SphereGeometry(0.25, 24, 16);
-  const material = new THREE.MeshLambertMaterial({ color: 0xffffff });
+  const material = new THREE.MeshBasicMaterial({ color: 0xffffff });
   const star = new THREE.Mesh(geometry, material);
 
   const [x, y, z] = new Array(3)

@@ -2,7 +2,8 @@ import "./style.css";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
-// 3 basics: Scene, Camera, Renderer
+// Setup
+// 3D basics: Scene, Camera, Renderer
 
 const scene = new THREE.Scene();
 
@@ -21,6 +22,8 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 camera.position.setZ(30);
 camera.position.setX(-3);
+
+const loader = new THREE.TextureLoader();
 
 // Torus
 
@@ -68,7 +71,7 @@ Array(200).fill().forEach(addStar);
 
 // Background
 
-const bgTexture = new THREE.TextureLoader().load("space.jpeg");
+const bgTexture = loader.load("space.jpeg");
 scene.background = bgTexture;
 
 // Moon
@@ -76,8 +79,8 @@ scene.background = bgTexture;
 const moon = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
   new THREE.MeshLambertMaterial({
-    map: new THREE.TextureLoader().load("moon.jpeg"),
-    normalMap: new THREE.TextureLoader().load("normal.jpeg"),
+    map: loader.load("moon.jpeg"),
+    normalMap: loader.load("normal.jpeg"),
   })
 );
 // moon.position.z = 30;

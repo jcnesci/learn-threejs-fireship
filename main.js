@@ -25,9 +25,7 @@ camera.position.setX(-3);
 // Torus
 
 const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
-const material = new THREE.MeshStandardMaterial({
-  color: 0xff6347,
-});
+const material = new THREE.MeshLambertMaterial({ color: 0xff6347 });
 const torus = new THREE.Mesh(geometry, material);
 torus.position.setX(10);
 
@@ -56,7 +54,7 @@ const controls = new OrbitControls(camera, renderer.domElement);
 function addStar() {
   //TODO: optimize: make geom & mat only once. More?
   const geometry = new THREE.SphereGeometry(0.25, 24, 16);
-  const material = new THREE.MeshStandardMaterial({ color: 0xffffff });
+  const material = new THREE.MeshLambertMaterial({ color: 0xffffff });
   const star = new THREE.Mesh(geometry, material);
 
   const [x, y, z] = new Array(3)
@@ -78,7 +76,7 @@ scene.background = bgTexture;
 
 const moon = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
-  new THREE.MeshStandardMaterial({
+  new THREE.MeshLambertMaterial({
     map: new THREE.TextureLoader().load("moon.jpeg"),
     normalMap: new THREE.TextureLoader().load("normal.jpeg"),
   })
